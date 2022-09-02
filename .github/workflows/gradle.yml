@@ -20,13 +20,12 @@ jobs:
 
       - name: Copy jar file
         run: |
-          mv build/libs/Vulkan-*.jar ../../
-          export file=$(ls Vulkan-*.jar)
+          export file=$(ls build/libs/Vulkan-*.jar)
           export removedAll=$(echo ${file%-all*})
-          mv ${file} ${removedAll}.jar
+          mv build/libs/${file} build/libs/${removedAll}.jar
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: Vulkan Server
-          path: Vulkan-*.jar
+          path: build/libs/${removedAll}.jar
