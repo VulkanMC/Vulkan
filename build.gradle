@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
 group 'de.tomjuri'
@@ -12,4 +13,11 @@ repositories {
 
 dependencies {
     implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.vulkanmc.vulkan.Vulkan',
+                "Multi-Release": true
+    }
 }
