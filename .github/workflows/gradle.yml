@@ -22,7 +22,7 @@ jobs:
         run: |
           export file=$(ls build/libs/Vulkan-*.jar)
           export removedAll=$(echo ${file%-all*})
-          mv ${file} build/libs/${removedAll}.jar
+          mv ${file} ${removedAll}.jar
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
