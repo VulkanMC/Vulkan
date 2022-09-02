@@ -28,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: Vulkan Server
-          path: build/libs/${removedAll}.jar
+          path: ${removedAll}.jar
