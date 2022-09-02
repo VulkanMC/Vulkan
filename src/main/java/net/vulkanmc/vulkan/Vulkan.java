@@ -4,15 +4,17 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.GlobalEventHandler;
 import net.vulkanmc.vulkan.listener.ItemDropping;
 import net.vulkanmc.vulkan.listener.ItemPickup;
+import net.vulkanmc.vulkan.updater.Updater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class Vulkan {
 
     private static Vulkan instance;
     private final String name = "Vulkan";
-    private final String version = "1.0.0";
-    private final String releaseType = "Alpha";
+    private final String version = "v1.0.0";
 
     private final static Logger LOGGER = LoggerFactory.getLogger(Vulkan.class);
     private final MinecraftServer minecraftServer = MinecraftServer.init();
@@ -20,7 +22,9 @@ public class Vulkan {
 
     public static void main(String[] args) {
         instance = new Vulkan();
-        //TODO: Make jar not shaded, instead code a library downloader.
+        Updater.check();
+        //TODO: Check for updates
+        getInstance().printSysInfo();
         getInstance().startVulkan();
     }
 
@@ -28,8 +32,7 @@ public class Vulkan {
         ItemDropping.register(globalEventHandler);
         ItemPickup.register(globalEventHandler);
         MinecraftServer.setBrandName(name);
-        LOGGER.info("Starting " + name + " v" + version + "-" + releaseType);
-        printSysInfo();
+        LOGGER.info("Starting " + name + " " + version);
         minecraftServer.start("0.0.0.0", 25565);
     }
 
@@ -37,11 +40,15 @@ public class Vulkan {
         return instance;
     }
 
-    public void printSysInfo() {
+    private void printSysInfo() {
         System.out.println("System information:");
         System.out.println("Java: " + System.getProperty("java.vendor") + " " + System.getProperty("java.version"));
         System.out.println("OS: " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch"));
         System.out.println("Available Cores: " + Runtime.getRuntime().availableProcessors());
         System.out.println("Available Memory: " + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "MB");
+    }
+
+    public String getVersion() {
+        return version;
     }
 }
