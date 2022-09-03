@@ -1,4 +1,5 @@
 rootProject.name = 'Vulkan'
 include 'PvP'
 include 'Server'
+include 'World'
 

@@ -6,6 +6,7 @@ import net.vulkanmc.vulkan.config.Config;
 import net.vulkanmc.vulkan.listener.ItemDropping;
 import net.vulkanmc.vulkan.listener.ItemPickup;
 import net.vulkanmc.vulkan.updater.Updater;
+import net.vulkanmc.vulkan.world.VanillaWorld;
 
 public class Vulkan {
 
@@ -28,6 +29,7 @@ public class Vulkan {
         ItemDropping.register(globalEventHandler);
         ItemPickup.register(globalEventHandler);
         MinecraftServer.setBrandName(name);
+        VanillaWorld.setupWorlds();
         minecraftServer.start("0.0.0.0", 25565);
     }
 
