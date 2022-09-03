@@ -8,12 +8,7 @@ import net.vulkanmc.vulkan.Vulkan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.Scanner;
 
 public class Updater {
