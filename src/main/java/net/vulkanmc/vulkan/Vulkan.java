@@ -6,10 +6,6 @@ import net.vulkanmc.vulkan.config.Config;
 import net.vulkanmc.vulkan.listener.ItemDropping;
 import net.vulkanmc.vulkan.listener.ItemPickup;
 import net.vulkanmc.vulkan.updater.Updater;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 public class Vulkan {
 
@@ -24,7 +20,7 @@ public class Vulkan {
         instance = new Vulkan();
         Updater.check();
         Config.copy();
-        getInstance().printSysInfo();
+        getInstance().printInfo();
         getInstance().startVulkan();
     }
 
@@ -39,12 +35,18 @@ public class Vulkan {
         return instance;
     }
 
-    private void printSysInfo() {
+    private void printInfo() {
+        System.out.println("#######################################");
+        System.out.println("Vulkan info:");
+        System.out.println("Version: " + version);
+        System.out.println("Release type: "/*TODO: Actual release type system.*/ + "Alpha");
+        System.out.println("#######################################");
         System.out.println("System information:");
         System.out.println("Java: " + System.getProperty("java.vendor") + " " + System.getProperty("java.version"));
         System.out.println("OS: " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch"));
         System.out.println("Available Cores: " + Runtime.getRuntime().availableProcessors());
         System.out.println("Available Memory: " + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "MB");
+        System.out.println("#######################################");
     }
 
     public String getVersion() {
