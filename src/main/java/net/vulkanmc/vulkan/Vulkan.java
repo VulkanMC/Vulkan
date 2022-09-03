@@ -2,6 +2,7 @@ package net.vulkanmc.vulkan;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.GlobalEventHandler;
+import net.vulkanmc.vulkan.config.Config;
 import net.vulkanmc.vulkan.listener.ItemDropping;
 import net.vulkanmc.vulkan.listener.ItemPickup;
 import net.vulkanmc.vulkan.updater.Updater;
@@ -16,13 +17,13 @@ public class Vulkan {
     private final String name = "Vulkan";
     private final String version = "v1.0.0";
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(Vulkan.class);
     private final MinecraftServer minecraftServer = MinecraftServer.init();
     private final GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
 
     public static void main(String[] args) {
         instance = new Vulkan();
         Updater.check();
+        Config.copy();
         getInstance().printSysInfo();
         getInstance().startVulkan();
     }
