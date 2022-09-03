@@ -23,7 +23,6 @@ public class Vulkan {
     public static void main(String[] args) {
         instance = new Vulkan();
         Updater.check();
-        //TODO: Check for updates
         getInstance().printSysInfo();
         getInstance().startVulkan();
     }
@@ -32,7 +31,6 @@ public class Vulkan {
         ItemDropping.register(globalEventHandler);
         ItemPickup.register(globalEventHandler);
         MinecraftServer.setBrandName(name);
-        LOGGER.info("Starting " + name + " " + version);
         minecraftServer.start("0.0.0.0", 25565);
     }
 
