@@ -27,15 +27,4 @@ public class VanillaWorld {
         endContainer.setGenerator(new EndGenerator());
     }
 
-    public static InstanceContainer getOverWorldContainer() {
-        return overWorldContainer;
-    }
-
-    public static InstanceContainer getNetherContainer() {
-        return netherContainer;
-    }
-
-    public static InstanceContainer getEndContainer() {
-        return endContainer;
-    }
 }
